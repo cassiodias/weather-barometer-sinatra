@@ -1,0 +1,23 @@
+<html>
+<head>
+</head>	
+  <h1>Weather at: <%= @city.capitalize %></h1>
+<body>
+  images/<%= @weather.current.icon %>.png
+  <br/>	
+  <%= @weather.current.temperature.c %>°C
+  <br/>	
+  <% @weather.forecast.each do |f| %>
+    <div>
+	  </br>
+      <%= Time.new(f.valid_start_date.year, f.valid_start_date.month, f.valid_start_date.day).strftime "%a" %>
+      <br/>
+	  images/<%= f.icon %>.png
+      <br />
+      Maxima<%= f.high.c %>°
+	  <br/>
+      Minima <%= f.low.c %>°
+    </div>
+  <% end %>
+</body>
+</html>
